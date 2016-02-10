@@ -1,0 +1,28 @@
+{
+  "name": "metheora-fancy-loading",
+  "version": "1.0.0",
+  "authors": [
+    "Victor Hugo Marques <victor@metheora.com>"
+  ],
+  "description": "An element to shows a fancy loading",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "metheora-fancy-loading.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/metheora/metheora-fancy-loading/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "neon-animation": "PolymerElements/neon-animation#^1.1.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "paper-card": "PolymerElements/paper-card#^1.1.1"
+  }
+}

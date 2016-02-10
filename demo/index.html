@@ -1,0 +1,105 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>metheora-fancy-loading Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../metheora-fancy-loading.html">
+    <link rel="import" href="../../paper-card/paper-card.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
+</head>
+
+<body unresolved>
+
+    <style is="custom-style">
+        .crazy-fancy-loading {
+            --loading-primary-color: #c00459;
+            --loading-secondary-color: #c00459;
+        }
+        
+        metheora-fancy-loading {
+            margin: auto;
+            display: table;
+        }
+    </style>
+
+    <p>An example of <code>&lt;metheora-fancy-loading&gt;</code>:</p>
+
+    <div>
+        <paper-card heading="210x210" image="" elevation="1" animated-shadow="false">
+            <div class="card-content">
+                <metheora-fancy-loading id="l1" class="crazy-fancy-loading" size="210"> </metheora-fancy-loading>
+            </div>
+            <div class="card-actions">
+                <paper-button id="showbtn">Show</paper-button>
+                <paper-button id="hidebtn">Hide</paper-button>
+            </div>
+        </paper-card>
+
+
+        <paper-card heading="250x250" image="" elevation="1" animated-shadow="false">
+            <div class="card-content">
+                <metheora-fancy-loading id="l2" size="250"> </metheora-fancy-loading>
+            </div>
+            <div class="card-actions">
+                <paper-button id="showbtn2">Show</paper-button>
+                <paper-button id="hidebtn2">Hide</paper-button>
+            </div>
+        </paper-card>
+
+        <paper-card heading="140x140" image="" elevation="1" animated-shadow="false">
+            <div class="card-content">
+                <metheora-fancy-loading id="l3" size="140"> </metheora-fancy-loading>
+            </div>
+            <div class="card-actions">
+                <paper-button id="showbtn3">Show</paper-button>
+                <paper-button id="hidebtn3">Hide</paper-button>
+            </div>
+        </paper-card>
+    </div>
+
+
+    <script>
+        var l1 = document.querySelector('#l1');
+        var l2 = document.querySelector('#l2');
+        var l3 = document.querySelector('#l3');
+
+      document.querySelector('#showbtn').addEventListener('click', function() {
+        l1.show();
+      });
+
+      document.querySelector('#hidebtn').addEventListener('click', function() {
+        l1.hide();
+      });
+      
+       document.querySelector('#showbtn2').addEventListener('click', function() {
+        l2.show();
+      });
+
+      document.querySelector('#hidebtn2').addEventListener('click', function() {
+        l2.hide();
+      });
+      
+      document.querySelector('#showbtn3').addEventListener('click', function () {
+          l3.show();
+      });
+
+      document.querySelector('#hidebtn3').addEventListener('click', function () {
+          l3.hide();
+      });
+    </script>
+
+</body>
+
+</html>
