@@ -264,7 +264,8 @@ Custom property | Description | Default
                     type: Number
                 },
                 visible: {
-                    type: Boolean
+                    type: Boolean,
+                    value: false,
                 },
                 animationConfig: {
                     type: Object,
@@ -299,9 +300,9 @@ Custom property | Description | Default
                 if(!this._originalElementDisplayStyle){
                    this._originalElementDisplayStyle= this.style.display;
                 }
-                
-
-                             
+                if(!this.visible){
+                    this.style.display = 'none';
+                }                             
             },
 
             attached: function () {
@@ -311,7 +312,10 @@ Custom property | Description | Default
                 // This is a good place to perform any work related to your element's
                 // visual state or active behavior (measuring sizes, beginning animations,
                 // loading resources, etc).
-                if(this.size < 140) this.size = 140;
+                if(this.size < 140){
+                  this.size = 140;
+                  console.error("Minimum size: 140");  
+                } 
                 
                 this.$.container.style.width = this.$.container.style.height = this.size + 'px';
                 
@@ -330,8 +334,6 @@ Custom property | Description | Default
                 
                 this.$.circle_inner.style.width = this.$.circle_inner.style.height = this.size - 130+ 'px';
                 this.$.circle_inner.style['margin-left'] = this.$.circle_inner.style['margin-top'] = (-((this.size-130)/2)) + 'px';
-                
-               
             },
 
             detached: function () {
@@ -351,7 +353,6 @@ Custom property | Description | Default
                 if (!this.visible) {
                     this.style.display = 'none';
                 }
-                
             },
 
             /**

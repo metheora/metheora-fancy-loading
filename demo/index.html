@@ -32,14 +32,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             margin: auto;
             display: table;
         }
+        
+        body{
+            font-family: 'Roboto', 'Noto', sans-serif;
+        }
     </style>
 
     <p>An example of <code>&lt;metheora-fancy-loading&gt;</code>:</p>
 
     <div>
         <paper-card heading="210x210" image="" elevation="1" animated-shadow="false">
-            <div class="card-content">
-                <metheora-fancy-loading id="l1" class="crazy-fancy-loading" size="210"> </metheora-fancy-loading>
+            <div class="card-content" style="width:220px; height:220px;">
+                <metheora-fancy-loading id="l1" class="crazy-fancy-loading" visible size="210"> </metheora-fancy-loading>
             </div>
             <div class="card-actions">
                 <paper-button id="showbtn">Show</paper-button>
@@ -48,8 +52,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-card>
 
 
-        <paper-card heading="250x250" image="" elevation="1" animated-shadow="false">
-            <div class="card-content">
+        <paper-card heading="250x250" image="" elevation="1" visible animated-shadow="false">
+            <div class="card-content" style="width:250px; height:250px;">
                 <metheora-fancy-loading id="l2" size="250"> </metheora-fancy-loading>
             </div>
             <div class="card-actions">
@@ -59,8 +63,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-card>
 
         <paper-card heading="140x140" image="" elevation="1" animated-shadow="false">
-            <div class="card-content">
-                <metheora-fancy-loading id="l3" size="140"> </metheora-fancy-loading>
+            <div class="card-content" style="width:200px; height:200px;">
+                <metheora-fancy-loading id="l3" size="100"> </metheora-fancy-loading>
             </div>
             <div class="card-actions">
                 <paper-button id="showbtn3">Show</paper-button>
