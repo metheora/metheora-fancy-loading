@@ -1,0 +1,380 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../neon-animation/animations/fade-out-animation.html">
+
+
+<!--
+An element to show a fancy loading animation <br/>
+* Based on the  <a href="http://codepen.io/eboye/pen/gKnLq">codepen code</a> created by <a href="http://codepen.io/eboye/">Vasilj Milošević</a>
+
+Example:
+
+    <metheora-fancy-loading></metheora-fancy-loading>
+
+Example:
+
+    <metheora-fancy-loading size="250"> </metheora-fancy-loading>
+    
+### Styling
+
+The following custom properties and mixins are available for styling: 
+  
+Custom property | Description | Default 
+----------------|-------------|---------- 
+`--loading-primary-color` | The primary color | `rgb(133, 224, 242)` 
+`--loading-secondary-color` | The Secondary color | `rgb(74, 124, 134)` 
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="metheora-fancy-loading">
+    <template>
+        <style>
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+            
+            .container {
+                display: block;
+                position: relative;
+            }
+            
+            .circle-big {
+                border: 4px dotted var(--loading-primary-color, rgb(133, 224, 242));
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -109px;
+                margin-top: -109px;
+                border-radius: 214px;
+                -moz-animation: rotate-rev 10s infinite linear;
+                -webkit-animation: rotate-rev 10s infinite linear;
+                animation: rotate-rev 10s infinite linear;
+            }
+            
+            .circle {
+                width: 180px;
+                height: 180px;
+                border: 10px inset var(--loading-primary-color, rgb(133, 224, 242));
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -100px;
+                margin-top: -100px;
+                border-radius: 200px;
+                -moz-animation: rotate 5s infinitelinear;
+                -webkit-animation: rotate 5s infinite linear;
+                animation: rotate 5s infinite linear;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            
+            .circle-small {
+                width: 150px;
+                height: 150px;
+                border: 6px outset var(--loading-primary-color, rgb(133, 224, 242));
+                ;
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -81px;
+                margin-top: -81px;
+                border-radius: 156px;
+                -moz-animation: rotate-rev 3s infinite linear;
+                -webkit-animation: rotate-rev 3s infinite linear;
+                animation: rotate-rev 3s infinite linear;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            
+            .circle-inner-inner {
+                width: 100px;
+                height: 100px;
+                background-color: var(--loading-secondary-color, rgb(74, 124, 134));
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                border-radius: 100px;
+                -moz-animation: pulse 1.5s infinite ease-in;
+                -webkit-animation: pulse 1.5s infinite ease-in;
+                animation: pulse 1.5s infinite ease-in;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            
+            .circle-inner {
+                width: 80px;
+                height: 80px;
+                background-color: var(--loading-primary-color, rgb(133, 224, 242));
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -40px;
+                margin-top: -40px;
+                border-radius: 80px;
+                -moz-animation: pulse 1.5s infinite ease-in;
+                -webkit-animation: pulse 1.5s infinite ease-in;
+                animation: pulse 1.5s infinite ease-in;
+                opacity: 1;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            /*==============ANIMATIONS=================*/
+            /*==============ROTATE=====================*/
+            
+            @-moz-keyframes rotate {
+                0% {
+                    -moz-transform: rotate(0deg);
+                }
+                100% {
+                    -moz-transform: rotate(360deg);
+                }
+            }
+            
+            @-webkit-keyframes rotate {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+            
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            /*==============ROTATE-REV=================*/
+            
+            @-moz-keyframes rotate-rev {
+                0% {
+                    -moz-transform: rotate(0deg);
+                }
+                100% {
+                    -moz-transform: rotate(-360deg);
+                }
+            }
+            
+            @-webkit-keyframes rotate-rev {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(-360deg);
+                }
+            }
+            
+            @keyframes rotate-rev {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(-360deg);
+                }
+            }
+            /*==============PULSE======================*/
+            
+            @-moz-keyframes pulse {
+                0% {
+                    -moz-transform: scale(0.1);
+                    opacity: 0.2;
+                }
+                50% {
+                    -moz-transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    -moz-transform: scale(0.1);
+                    opacity: 0.2;
+                }
+            }
+            
+            @-webkit-keyframes pulse {
+                0% {
+                    -webkit-transform: scale(0.1);
+                    opacity: 0.2;
+                }
+                50% {
+                    -webkit-transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    -webkit-transform: scale(0.1);
+                    opacity: 0.2;
+                }
+            }
+            
+            @keyframes pulse {
+                0% {
+                    transform: scale(0.1);
+                    opacity: 0.2;
+                }
+                50% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(0.1);
+                    opacity: 0.2;
+                }
+            }
+        </style>
+        <div id="container" class="container">
+            <div id="circle_big" class="circle-big"></div>
+            <div id="circle" class="circle"></div>
+            <div id="circle_small" class="circle-small"></div>
+            <div id="circle_inner_inner" class="circle-inner-inner"></div>
+            <div id="circle_inner" class="circle-inner"></div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'metheora-fancy-loading',
+
+            behaviors: [
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+
+            properties: {
+                /**
+                 * `size` The size in width an height of the element, minimum 140
+                 */
+                size:{
+                    value: 140,
+                    type: Number
+                },
+                visible: {
+                    type: Boolean,
+                    value: false,
+                },
+                animationConfig: {
+                    type: Object,
+                    value: function () {
+                        return {
+                            'entry': [{
+                                name: 'scale-up-animation',
+                                node: this
+                            }],
+                            'exit': [{
+                                name: 'fade-out-animation',
+                                node: this
+                            }]
+                        }
+                    }
+                },
+                _originalElementDisplayStyle:{
+                    type:String
+                }
+            },
+
+            // Element Lifecycle
+
+            ready: function () {
+                // `ready` is called after all elements have been configured, but
+                // propagates bottom-up. This element's children are ready, but parents
+                // are not.
+                //
+                // This is the point where you should make modifications to the DOM (when
+                // necessary), or kick off any processes the element wants to perform.  
+                
+                if(!this._originalElementDisplayStyle){
+                   this._originalElementDisplayStyle= this.style.display;
+                }
+                if(!this.visible){
+                    this.style.display = 'none';
+                }                             
+            },
+
+            attached: function () {
+                // `attached` fires once the element and its parents have been inserted
+                // into a document.
+                //
+                // This is a good place to perform any work related to your element's
+                // visual state or active behavior (measuring sizes, beginning animations,
+                // loading resources, etc).
+                if(this.size < 140){
+                  this.size = 140;
+                  console.error("Minimum size: 140");  
+                } 
+                
+                this.$.container.style.width = this.$.container.style.height = this.size + 'px';
+                
+                
+                this.$.circle_big.style.width = this.$.circle_big.style.height = this.size + 'px';
+                this.$.circle_big.style['margin-left'] = this.$.circle_big.style['margin-top'] = -((this.size/2)+4) + 'px';
+                
+                this.$.circle.style.width = this.$.circle.style.height = this.size - 30+ 'px';
+                this.$.circle.style['margin-left'] = this.$.circle.style['margin-top'] = (-((this.size-10)/2)) + 'px';
+                
+                this.$.circle_small.style.width = this.$.circle_small.style.height = this.size - 60+ 'px';
+                this.$.circle_small.style['margin-left'] = this.$.circle_small.style['margin-top'] = (-((this.size-50)/2)) + 'px';
+                
+                this.$.circle_inner_inner.style.width = this.$.circle_inner_inner.style.height = this.size - 110+ 'px';
+                this.$.circle_inner_inner.style['margin-left'] = this.$.circle_inner_inner.style['margin-top'] = (-((this.size-110)/2)) + 'px';
+                
+                this.$.circle_inner.style.width = this.$.circle_inner.style.height = this.size - 130+ 'px';
+                this.$.circle_inner.style['margin-left'] = this.$.circle_inner.style['margin-top'] = (-((this.size-130)/2)) + 'px';
+            },
+
+            detached: function () {
+                // The analog to `attached`, `detached` fires when the element has been
+                // removed from a document.
+                //
+                // Use this to clean up anything you did in `attached`.
+            },
+
+            // Element Behavior
+            
+            listeners: {
+                'neon-animation-finish': '_onAnimationFinish'
+            },
+            _onAnimationFinish: function () {
+                
+                if (!this.visible) {
+                    this.style.display = 'none';
+                }
+            },
+
+            /**
+             * Show the loading animation
+             *
+             */
+            show: function () {
+                this.visible = true;
+                this.style.display = this._originalElementDisplayStyle;
+                this.playAnimation('entry');
+            },
+
+            /**
+             * Hides the loading animation
+             *
+             */
+            hide: function () {
+                this.visible = false;
+                this.playAnimation('exit');
+            }
+
+        });
+    </script>
+</dom-module>
